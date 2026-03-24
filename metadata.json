@@ -1,0 +1,5 @@
+{
+  "name": "Comparador de Preços Inteligente",
+  "description": "Compare o preço por unidade de diferentes produtos para encontrar a melhor oferta, independentemente do tamanho da embalagem.",
+  "requestFramePermissions": []
+}
