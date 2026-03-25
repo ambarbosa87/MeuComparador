@@ -1,15 +1,23 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Configuração da página do Streamlit
+# 1. Configuração da página do Streamlit (Ícone da Aba do Navegador)
 st.set_page_config(
     page_title="Comparador de Preços Inteligente",
-    page_icon="💰",
+    page_icon="https://i.imgur.com/NVmQbJT.png",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
 
-# Estilos customizados para o Streamlit para esconder menus e padding desnecessário
+# 2. Truque para o ícone da tela inicial (iOS e Android)
+st.markdown("""
+    <head>
+        <link rel="apple-touch-icon" href="https://i.imgur.com/NVmQbJT.png">
+        <link rel="icon" href="https://i.imgur.com/NVmQbJT.png">
+    </head>
+""", unsafe_allow_html=True)
+
+# 3. Estilos customizados para o Streamlit para esconder menus e padding desnecessário
 st.markdown("""
     <style>
         #MainMenu {visibility: hidden;}
@@ -27,7 +35,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# O código HTML/React completo
+# 4. O código HTML/React completo (Interface Visual)
 html_code = """
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -35,6 +43,8 @@ html_code = """
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comparador de Preços</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/NVmQbJT.png">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/NVmQbJT.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- React & ReactDOM -->
@@ -357,48 +367,4 @@ html_code = """
                                                         </div>
                                                     </div>
 
-                                                    {isBest && processedItems.length > 1 && (
-                                                        <div className="mt-4 pt-4 border-t border-emerald-50 flex items-center gap-2 text-xs text-emerald-600 font-medium">
-                                                            <Icon name="alert-circle" size={14} />
-                                                            Este item custa menos por unidade de medida.
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                )}
-
-                                {items.length > 0 && (
-                                    <div className="mt-8 p-6 bg-slate-900 rounded-3xl text-white overflow-hidden relative">
-                                        <div className="relative z-10">
-                                            <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                                                <Icon name="info" size={20} className="text-emerald-400" />
-                                                Dica de Economia
-                                            </h3>
-                                            <p className="text-slate-400 text-sm leading-relaxed">
-                                                Muitas vezes, embalagens maiores parecem mais baratas, mas o preço por quilo ou litro pode ser maior. 
-                                                Sempre compare o valor unitário para garantir que você está levando a melhor oferta para casa.
-                                            </p>
-                                        </div>
-                                        <div className="absolute -right-8 -bottom-8 opacity-10">
-                                            <Icon name="shopping-cart" size={160} />
-                                        </div>
-                                    </div>
-                                )}
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
-</body>
-</html>
-"""
-
-# Renderiza o componente HTML no Streamlit
-components.html(html_code, height=1000, scrolling=True)
+                                                    {isBest && p
