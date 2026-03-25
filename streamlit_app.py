@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# 1. Configuração da página do Streamlit (Ícone da Aba do Navegador)
+# Configuração da página do Streamlit
 st.set_page_config(
     page_title="Comparador de Preços Inteligente",
     page_icon="https://i.imgur.com/NVmQbJT.png",
@@ -9,7 +9,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# 2. Truque para o ícone da tela inicial (iOS e Android)
+# Truque para o ícone da tela inicial (iOS e Android)
 st.markdown("""
     <head>
         <link rel="apple-touch-icon" href="https://i.imgur.com/NVmQbJT.png">
@@ -17,7 +17,7 @@ st.markdown("""
     </head>
 """, unsafe_allow_html=True)
 
-# 3. Estilos customizados para o Streamlit para esconder menus e padding desnecessário
+# Estilos customizados para o Streamlit para esconder menus e padding desnecessário
 st.markdown("""
     <style>
         #MainMenu {visibility: hidden;}
@@ -35,7 +35,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 4. O código HTML/React completo (Interface Visual)
+# O código HTML/React completo
 html_code = """
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -367,4 +367,48 @@ html_code = """
                                                         </div>
                                                     </div>
 
-                                                    {isBest && p
+                                                    {isBest && processedItems.length > 1 && (
+                                                        <div className="mt-4 pt-4 border-t border-emerald-50 flex items-center gap-2 text-xs text-emerald-600 font-medium">
+                                                            <Icon name="alert-circle" size={14} />
+                                                            Este item custa menos por unidade de medida.
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                )}
+
+                                {items.length > 0 && (
+                                    <div className="mt-8 p-6 bg-slate-900 rounded-3xl text-white overflow-hidden relative">
+                                        <div className="relative z-10">
+                                            <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
+                                                <Icon name="info" size={20} className="text-emerald-400" />
+                                                Dica de Economia
+                                            </h3>
+                                            <p className="text-slate-400 text-sm leading-relaxed">
+                                                Muitas vezes, embalagens maiores parecem mais baratas, mas o preço por quilo ou litro pode ser maior. 
+                                                Sempre compare o valor unitário para garantir que você está levando a melhor oferta para casa.
+                                            </p>
+                                        </div>
+                                        <div className="absolute -right-8 -bottom-8 opacity-10">
+                                            <Icon name="shopping-cart" size={160} />
+                                        </div>
+                                    </div>
+                                )}
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
+"""
+
+# Renderiza o componente HTML no Streamlit
+components.html(html_code, height=1000, scrolling=True)
